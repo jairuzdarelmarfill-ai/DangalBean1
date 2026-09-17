@@ -1,0 +1,478 @@
+/* =========================================================
+   Dangal Beans styles.css ^_^
+   OUR STYLESHEET
+   ========================================================= */
+
+/* 1. CSS VARIABLES (we used 6 color palette) */
+:root {
+  --color-dark: #3b2417;      /* espresso brown - headers, text */
+  --color-medium: #6f4e37;    /* medium roast brown - nav, buttons */
+  --color-light: #c8a27c;     /* latte brown - borders, hover */
+  --color-cream: #fbf3e7;     /* cream - page background */
+  --color-cream-dark: #f1e3d3;/* beige - card background */
+  --color-accent: #a9431e;    /* terracotta - buttons, highlights */
+
+  --font-heading: "Georgia", "Times New Roman", serif;
+  --font-body: "Segoe UI", Verdana, Arial, sans-serif;
+
+  --radius: 10px;
+  --shadow: 0 4px 10px rgba(59, 36, 23, 0.15);
+}
+
+
+/* 2. RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* border & padding are counted inside the width */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  line-height: 1.6;
+
+  /* background image*/
+  background-color: var(--color-cream); /* fallback while the image loads */
+  background-image:
+    linear-gradient(rgba(251, 243, 231, 0.92), rgba(251, 243, 231, 0.92)),
+    url("images/kapeben.jpg");
+  background-repeat: repeat;      
+  background-size: 400px;         
+  background-attachment: fixed;   /* texture stays while scrolling  */
+}
+
+img {
+  max-width: 100%;   
+  display: block;
+  border-radius: var(--radius);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-accent);
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto; 
+  padding: 60px 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--color-dark);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-medium);
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+/* 3. HEADER & NAVIGATION (Flexbox)*/
+header {
+  background-color: var(--color-dark);
+  border-bottom: 4px solid var(--color-accent);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;                 
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 0;                /* box model: padding */
+}
+
+.logo {
+  color: var(--color-cream);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--color-light);
+}
+
+.nav-links {
+  display: flex;         /* FLEXBOX layout for our menu*/
+  gap: 28px;
+}
+
+.nav-links a {
+  color: var(--color-cream);
+  font-weight: bold;
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent; 
+  transition: 0.25s ease;
+}
+
+/* PSEUDO-CLASS for navigation links */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-light);
+  border-bottom: 2px solid var(--color-light);
+}
+
+/* 4. HERO SECTION*/
+.hero {
+  display: flex;                
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.hero-text {
+  flex: 1 1 400px;  
+}
+
+.hero-image {
+  flex: 1 1 100px;
+}
+
+.hero-text h1 {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  margin-bottom: 24px;
+  color: var(--color-medium);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-cream);
+  padding: 14px 28px;            
+  border: 2px solid var(--color-accent); 
+  border-radius: var(--radius);
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+/* hover effect on buttons */
+.btn:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-dark);
+  color: var(--color-cream);
+}
+
+/* -
+   5. GENERIC CARD GRID (CSS Grid)- */
+.grid {
+  display: grid;                                 
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background-color: var(--color-cream-dark);
+  border: 1px solid var(--color-light);  
+  border-radius: var(--radius);
+  padding: 20px;                         
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+/* PSEUDO-CLASS for hover effect on cards */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(59, 36, 23, 0.25);
+  border-color: var(--color-accent);
+}
+
+.card img {
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--color-medium);
+  font-size: 0.95rem;
+}
+
+/* 6. GALLERY (CSS Grid)*/
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 3px solid var(--color-cream-dark); 
+  transition: 0.25s ease;
+}
+
+.gallery-grid img:hover {
+  border-color: var(--color-accent);
+  transform: scale(1.03);
+}
+
+/*  7. CALL TO ACTION BANNER*/
+.cta-banner {
+  background-color: var(--color-medium);
+  color: var(--color-cream);
+  text-align: center;
+  padding: 60px 20px;   
+}
+
+.cta-banner h2 {
+  color: var(--color-cream);
+}
+
+.cta-banner p {
+  margin-bottom: 24px;
+  color: var(--color-cream-dark);
+}
+
+/* 8. MENU PAGE*/
+.menu-category {
+  margin-bottom: 50px;
+}
+
+.menu-category h3 {
+  font-size: 1.5rem;
+  border-bottom: 3px solid var(--color-accent); 
+  display: inline-block;
+  padding-bottom: 6px;               
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  background-color: var(--color-cream-dark);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: 0.25s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-4px);
+}
+
+.menu-item-info {
+  padding: 16px;               
+  display: flex;               
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-item-info .price {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+/* 9. ABOUT PAGE */
+.about-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.about-flex.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-flex .about-text {
+  flex: 1 1 400px;
+}
+
+.about-flex .about-image {
+  flex: 1 1 400px;
+}
+
+.about-image .grid {
+  gap: 12px;
+}
+
+/* 10. CONTACT PAGE*/
+.contact-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-info {
+  width: 100%;
+  max-width: 1100px;
+  background-color: var(--color-cream-dark);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.contact-info ul li {
+  margin-bottom: 14px;
+  padding-left: 4px;
+}
+
+.contact-info a:hover {
+  color: var(--color-dark);
+  text-decoration: underline;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;                          
+  border: 1px solid var(--color-light); 
+  border-radius: 6px;
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: var(--color-accent);
+}
+
+.contact-form button {
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.operating-hours td,
+.operating-hours th {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-light);
+}
+
+/* FOOTER*/
+footer {
+  background-color: var(--color-dark);
+  color: var(--color-cream-dark);
+  padding: 40px 0 20px 0;
+}
+
+.footer-content {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;              
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-col h3 {
+  color: var(--color-cream);
+  margin-bottom: 14px;
+}
+
+.footer-col p,
+.footer-col a {
+  color: var(--color-cream-dark);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer-col a:hover {
+  color: var(--color-light);
+}
+
+.footer-social {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.footer-social img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  transition: 0.25s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-medium); /* box model: border */
+  font-size: 0.85rem;
+  color: var(--color-light);
+}
+
+/* 12. RESPONSIVE DESIGN (media queries)*/
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav-links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .about-flex.reverse {
+    flex-direction: row; 
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}
